@@ -1,5 +1,3 @@
-# key y0wu4Rli2UtbDV0mbNHGbNKTWallaWXtQjWlUbTJ
-
 import requests
 import json
 import pandas as pd
