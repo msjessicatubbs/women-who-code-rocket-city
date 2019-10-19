@@ -1,3 +1,4 @@
+/* Page tags */
 body {
   background-color: #1e1d78;
   font-family: 'Roboto', sans-serif;
@@ -11,14 +12,21 @@ h1, h2, h3, h4, h5 {
   margin: 0;
 }
 
-h3 {
-  margin-top: 20px;
+a, a:focus, a:hover, a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+h3, h2 {
+  margin-top: 15px;
 }
 
 h3, h1 {
   margin-right: 20%;
 }
 
+/* Nav links on left side of page */
+/* Adds margin to the emojis which come from an open source library */
 .emoji {
   margin-right: 5px;
 }
@@ -35,9 +43,25 @@ li {
   padding: 8px;
 }
 
+button {
+  background-color: #7732d1;
+  padding: 10px;
+  font-family: 'Signika', sans-serif;
+  font-size: 16px;
+  outline: none;
+  cursor: hand;
+  border: 1px solid black;
+  border-radius: 7px;
+  width: 90px;
+  margin-right: 25px;
+}
+
+/* Adds flex display to divs with this class */
 .flex {
   display: flex;
 }
+
+/* Set up divs left and center for main items in the page */
 
 .left {
   width: 250px;
@@ -53,6 +77,11 @@ li {
   margin-left: 3%;
 }
 
+.music {
+  margin-left: 30%;
+}
+
+/* Game divs hold the game and the bar next to it, they are in their own flex div */
 .game {
   border: 2px solid #f540da;
   border-radius: 2px;
@@ -69,3 +98,88 @@ li {
   margin-top: 20px;
   margin-left: 10px;
 }
+
+.finalDiv {
+  margin: 0 auto;
+}
+
+.finishImg {
+  margin-top: 25px;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#puzzleTwo, #puzzleThree, #puzzleFour, #puzzleFive, .finalDiv, #okay {
+  display: none;
+}
+
+/* Modal information */
+/* The close button */
+
+.close {
+  color: grey;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Outline */
+
+.studentModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+/* Content */
+
+.studentModalContent, .teacherModalContent, .resourcesModalContent, .howModalContent {
+  margin: auto;
+  padding: 15px;
+  width: 40%;
+  background-color: white;
+  border: 2px solid #2b2b3a;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 24px;
+}
+
+/* Teacher info modal, other modals as well */
+
+.teacherModal, .resourcesModal, .howModal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.teacherModalContent ul, .teacherModalContent li, .resourcesModal ul, .resourcesModal li {
+  text-align: left;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+}
+
+ .howModal ul, .howModal li {
+   text-align: left;
+   color: black;
+   font-family: 'Roboto', sans-serif;
+   font-size: 16px;
+   margin-top: 0;
+ }
