@@ -56,6 +56,16 @@ button {
   margin-right: 25px;
 }
 
+/* Title */
+
+.logo {
+  margin-left: 200px;
+}
+
+.title {
+  width: 500px;
+}
+
 /* Adds flex display to divs with this class */
 .flex {
   display: flex;
