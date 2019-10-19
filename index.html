@@ -5,20 +5,24 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Signika&display=swap" rel="stylesheet">
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <!-- This link makes the puzzle plugin work -->
+    <script type="text/javascript" src="snapfit.js"></script>
+    <script src="script.js"></script>
     <title>Satellite Earth!</title>
   </head>
 
-  <body>
+   <body>
+
 <!-- Page flex for left and right main frames -->
 <div class="flex">
   <!-- Left purple bar for nav items -->
   <div class="left">
     <!-- List for nav links -->
     <ul>
-      <li><i class="em em-notebook_with_decorative_cover emoji"></i>Resources</li>
-      <li><i class="em em-grey_question emoji"></i>Trivia</li>
-      <li><i class="em em-file_cabinet emoji"></i>Teacher Information</li>
-      <li><i class="em em-cold_sweat emoji"></i>How to Play</li>
+      <li><a href="#" onclick="studentModal()"><i class="em em-grey_question emoji"></i>Trivia</a></li>
+      <li><a href="#" onclick="resourcesModal()"><i class="em em-notebook_with_decorative_cover emoji"></i>Resources</a></li>
+      <li><a href="#" onclick="teacherModal()"><i class="em em-file_cabinet emoji"></i>Teacher Information</a></li>
+      <li><a href="#" onclick="howModal()"><i class="em em-cold_sweat emoji"></i>How to Play</a></li>
     </ul>
 
 <!-- End of left div -->
@@ -26,14 +30,71 @@
 
 <!-- Center div that holds game and other information -->
 <div class="center">
-  <!-- Title -->
-  <h3>Welcome to</h3>
-  <h1>Satellite Earth!</h1>
-
+  <!-- Title, has div with flex to put logo and words next to each other -->
+  <div class="flex">
+    <div class="logo">
+      <img src="logo.png" width="100px" height="100px">
+    </div>
+    <div class="title">
+      <h3>Welcome to</h3>
+      <h1>Satellite Earth!</h1>
+    </div>
+  </div>
   <!-- Flex div for the game and the progress bar next to the game -->
   <div class="flex">
-    <div class="game">Game here</div>
-    <div class="gameBar">Game bar</div>
+    <!-- Game div, autofocus to pull the focus to it when the page loads -->
+    <div class="game" autofocus>
+      <!-- Puzzle one -->
+      <img id="puzzleOne" onload="snapfit.add(this,{callback: function() {
+        alert('You solved the puzzle!');
+        scoreFunOne();
+        },
+        aborder:false, aMixed: true, aimage:true, level:1, polygon:true, space:0});" width="750px" height="400px" src="blank.jpg" name="canvasOne">
+      <!-- Puzzle two -->
+      <img id="puzzleTwo" onload="snapfit.add(this,{callback: function() {
+          alert('You solved the puzzle!');
+          scoreFunTwo();
+          },
+          aborder:false, aMixed: true, aimage:true, level:2, polygon:true, space:0});" width="750px" height="400px" src="blank.jpg" name="canvasTwo">
+      <!-- Puzzle three -->
+      <img id="puzzleThree" onload="snapfit.add(this,{callback: function() {
+          alert('You solved the puzzle!');
+          scoreFunThree();
+          },
+          aborder:false, aMixed: true, aimage:true, level:3, polygon:true, space:0});" width="750px" height="400px" src="blank.jpg" name="canvasThree">
+      <!-- Puzzle Four -->
+      <img id="puzzleFour" onload="snapfit.add(this,{callback: function() {
+          alert('You solved the puzzle!');
+          scoreFunFour();
+          },
+          aborder:false, aMixed: true, aimage:true, level:4, polygon:true, space:0});" width="750px" height="400px" src="blank.jpg" name="canvasFour">
+      <!-- Puzzle two -->
+      <img id="puzzleFive" onload="snapfit.add(this,{callback: function() {
+          alert('You solved the puzzle!');
+          scoreFunFive();
+          },
+          aborder:false, aMixed: true, aimage:true, level:5, polygon:true, space:0});" width="750px" height="400px" src="blank.jpg" name="canvasFive">
+      <!-- Final div shows when all puzzles have been solved -->
+      <div class="finalDiv">
+        <h2>Congratulations!</h2>
+        <h4>You finished the game!</h4>
+        <img src="winner.jpg" class="finishImg" width="400px" height="250px">
+      </div>
+    </div>
+    <div class="gameBar">
+      <h2>Instructions:</h2>
+      <ul>
+        <li><i class="em em-earth_americas emoji"></i>Press delete to start!</li>
+        <li><i class="em em-earth_americas emoji"></i>Finished? Double click any piece to check your work.</li>
+        <li><i class="em em-earth_americas emoji"></i>Need more rockets? Try trivia!</li>
+      </ul>
+      <h4>Your score is:</h4><h4 id="currentScore">0</h4><br>
+    <div class="music">
+      <i class="em em-musical_note emoji"></i>
+      <i class="em em-arrow_forward emoji" onclick="play()"></i>
+      <i class="em em-octagonal_sign emoji" onclick="stopMusic()"></i>
+   </div>
+    </div>
   <!-- End of flex div -->
   </div>
 <!-- End of center div -->
@@ -41,6 +102,82 @@
 <!-- End of main flex div -->
 </div>
 
+<!-- Modal for trivia, questions are put in dynamically  -->
+<div id="studentModal" class="studentModal">
+  <div class="studentModalContent">
+    <!-- Close button -->
+    <span class="close" onclick="closeModal()">&times;</span>
+    <h4>Space Trivia</h4><br>
+    <h4>Answer questions correctly to earn more rocket ships.</h4><br>
+    <div id="question"></div><br>
+    <button id="yes" onclick="yesFun()"></button><button id="no" onclick="noFun()"></button>
+    <button id="okay" onclick="okayFun()">Okay!</button><br><br>
+  </div>
+</div>
+
+<!-- Modal for teacher information -->
+<div id="teacherModal" class="teacherModal">
+  <div class="teacherModalContent">
+    <!-- Close button -->
+    <span class="close" onclick="closeteacherModal()">&times;</span>
+    <h4>Teacher Information</h4><br>
+    <h4>In Your Classroom: SATELLITE EARTH! </h4><br>
+    <h5>Why should you integrate SATELLITE EARTH! into your classroom experience?</h5>
+      <ul>
+        <li>Spark your students’ interest in multiple areas of interest: satellite imaging, meteorology, geography, astronomy, and more!</li>
+        <li>Introduce your students to advanced subjects at a basic level with the included trivia questions.</li>
+        <li>No fees, licenses, data collection, or advertising involved - you may use SATELLITE EARTH! as it is intended: a purely educational tool developed for the benefit of teachers and students alike.</li>
+      </ul>
+   <h5>How can you integrate SATELLITE EARTH! Into your classroom experience?</h5>
+      <ul>
+        <li>We have developed SATELLITE EARTH! so it may be used in multiple scenarios - from little supervision required to participation by the entire classroom as a group.</li>
+        <li>Students can play individually, in small groups, or as a classroom.</li>
+        <li>SATELLITE EARTH! is also available for students to play at home, as no software installation is needed.</li>
+        <li>For small or large group participation scenarios, you can use the trivia question bank as discussion questions.</li>
+      </ul>
+  </div>
+</div>
+
+<!-- Modal for resources-->
+<div id="resourcesModal" class="resourcesModal">
+  <div class="resourcesModalContent">
+    <!-- Close button -->
+    <span class="close" onclick="closeresourcesModal()">&times;</span>
+    <h4>Resources</h4><br>
+   <h5></h5>
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+  </div>
+</div>
+
+<!-- Modal for how to play -->
+<div id="howModal" class="howModal">
+  <div class="howModalContent">
+    <!-- Close button -->
+    <span class="close" onclick="closehowModal()">&times;</span>
+    <h4>How to Play</h4><br>
+   <h5></h5>
+      <ul>
+        <li><i class="em em-earth_americas emoji"></i>Press delete to start!</li>
+        <li><i class="em em-earth_americas emoji"></i>Finished? Double click any piece to check your work.</li>
+        <li><i class="em em-earth_americas emoji"></i>Need more rockets? Try trivia!</li>
+      </ul>
+  </div>
+</div>
+
+<!-- Audio files -->
+<audio id="audio" src="background.wav"></audio>
+<audio id="audioWinner" src="winner.wav"></audio>
+<audio id="wrong" src="wrong.wav"></audio>
+<audio id="right" src="right.wav"></audio>
+
+<!-- Link to Jquery and JS files -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="script.js"></script>
 </body>
 
   <footer>
