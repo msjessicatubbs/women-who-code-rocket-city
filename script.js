@@ -16,6 +16,7 @@ function scoreFunOne() {
   } else {
    $("#puzzleOne").hide();
    $("#puzzleTwo").show();
+   displayImgTwo();
   }
 }
 
@@ -27,6 +28,7 @@ function scoreFunTwo() {
   } else {
    $("#puzzleTwo").hide();
    $("#puzzleThree").show();
+   displayImgThree();
  }
 }
 
@@ -38,6 +40,7 @@ function scoreFunThree() {
   } else {
    $("#puzzleThree").hide();
    $("#puzzleFour").show();
+   displayImgFour();
  }
 }
 
@@ -49,6 +52,7 @@ function scoreFunFour() {
   } else {
    $("#puzzleFour").hide();
    $("#puzzleFive").show();
+   displayImgFive();
  }
 }
 
@@ -166,4 +170,45 @@ function closehowModal() {
 
 function closeteacherModal() {
   $('#teacherModal').hide();
+}
+
+// Images code for randomizing the images from the different folders for the different levels //
+
+let oneImage = ["wildfires/wildfires_1.jpg", "wildfires/wildfires_2.jpg", "wildfires/wildfires_3.jpg", "wildfires/wildfires_4.jpg", "wildfires/wildfires_5.jpg"];
+
+function displayImg(){
+    var num = Math.floor(Math.random() * (oneImage.length));
+    document.canvasOne.src=oneImage[num];
+}
+
+window.onload = function() {
+  displayImg();
+};
+
+let TwoImage = ["severe_storms/severe_storms_1.jpg", "severe_storms/severe_storms_2.jpg", "severe_storms/severe_storms_3.jpg", "severe_storms/severe_storms_4.jpg", "severe_storms/severe_storms_5.jpg"];
+
+function displayImgTwo(){
+    var num = Math.floor(Math.random() * (TwoImage.length));
+    document.canvasTwo.src=TwoImage[num];
+}
+
+let ThreeImage = ["sea_and_lake_ice/sea_and_lake_ice_1.jpg", "sea_and_lake_ice/sea_and_lake_ice_2.jpg", "sea_and_lake_ice/sea_and_lake_ice_3.jpg", "sea_and_lake_ice/sea_and_lake_ice_4.jpg", "sea_and_lake_ice/sea_and_lake_ice_5.jpg"];
+
+function displayImgThree(){
+    var num = Math.floor(Math.random() * (ThreeImage.length));
+    document.canvasThree.src=ThreeImage[num];
+}
+
+let FourImage = ["temperature_extremes/temperature_extremes_1.jpg", "temperature_extremes/temperature_extremes_2.jpg", "temperature_extremes/temperature_extremes_3.jpg", "temperature_extremes/temperature_extremes_4.jpg", "temperature_extremes/temperature_extremes_5.jpg"];
+
+function displayImgFour(){
+    var num = Math.floor(Math.random() * (FourImage.length));
+    document.canvasFour.src=FourImage[num];
+}
+
+let FiveImage = ["dust_and_haze/dust_and_haze_1.jpg", "dust_and_haze/dust_and_haze_2.jpg", "dust_and_haze/dust_and_haze_3.jpg", "dust_and_haze/dust_and_haze_4.jpg", "dust_and_haze/dust_and_haze_5.jpg"];
+
+function displayImgFive(){
+    var num = Math.floor(Math.random() * (FiveImage.length));
+    document.canvasFive.src=FiveImage[num];
 }
