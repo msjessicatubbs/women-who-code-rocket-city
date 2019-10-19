@@ -22,6 +22,14 @@ limit = '5' # must be string
 cats_folders = ('.\wildfires', '.\severe_storms', '.\sea_and_lake_ice', '.\\temperature_extremes', '.\dust_and_haze')
 
 #=======================================================================================================================
+#                                   INITIALIZE VARIABLES
+#=======================================================================================================================
+
+cat_titles = []
+cat_ids = []
+cats_dictionary = {}
+
+#=======================================================================================================================
 #                                   ACCESS API AND LOAD DATA
 #=======================================================================================================================
 
@@ -34,17 +42,12 @@ data = json.loads(cats.text)
 # query data for categories
 query = data['categories']
 
-# initialize empty lists and dictionary
-cat_titles = []
-cat_ids = []
-cats_dictionary = {}
-
 # build lists
 for x in query:
     cat_titles.append(x['title'])
     cat_ids.append(x['id'])
 
-# build dictionary
+# build dictionary of category titles and category IDs
 cats_dictionary = dict(zip(cat_titles, cat_ids))
 
 #=======================================================================================================================
@@ -64,7 +67,8 @@ for cat in cats_to_query:
     identity = str(cats_dictionary.get(cat)) # must be string
     cat_query = requests.get(eonet_cats + '/' + '15' + '?limit=' + limit ) #+ '?api_key=' + api_key)
     cat_data = json.loads(cat_query.text)
-    
+
+   
     
 
 
