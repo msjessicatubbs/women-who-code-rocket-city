@@ -20,6 +20,9 @@ cats_to_query = ('Wildfires', 'Severe Storms', 'Sea and Lake Ice', 'Temperature 
 # How many most recent events to query images for
 limit = '5' # must be string
 
+# folders to populate (same order as cats_to_query)
+cats_folders = ('.\wildfires', '.\severe_storms', '.\sea_and_lake_ice', '.\\temperature_extremes', '.\dust_and_haze')
+
 #=======================================================================================================================
 #                                   ACCESS API AND LOAD DATA
 #=======================================================================================================================
@@ -55,6 +58,9 @@ cats_dictionary = dict(zip(cat_titles, cat_ids))
 #   - Temperature Extremes (no events currently)
 #   - Dust and Haze (no events currently)
 #=======================================================================================================================
+
+# creating cats_folder dictionary
+cats_folders_dict = dict(zip(cats_to_query, cats_folders))
 
 for cat in cats_to_query:
     identity = str(cats_dictionary.get(cat)) # must be string
